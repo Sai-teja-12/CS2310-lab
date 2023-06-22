@@ -1,0 +1,69 @@
+#! /nix/store/q0rhxcs2hfri6ja2fas671ywiszk20qr-iverilog-11.0/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/nix/store/q0rhxcs2hfri6ja2fas671ywiszk20qr-iverilog-11.0/lib/ivl/system.vpi";
+:vpi_module "/nix/store/q0rhxcs2hfri6ja2fas671ywiszk20qr-iverilog-11.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/nix/store/q0rhxcs2hfri6ja2fas671ywiszk20qr-iverilog-11.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/nix/store/q0rhxcs2hfri6ja2fas671ywiszk20qr-iverilog-11.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/nix/store/q0rhxcs2hfri6ja2fas671ywiszk20qr-iverilog-11.0/lib/ivl/va_math.vpi";
+S_0x17769b0 .scope module, "testbench" "testbench" 2 1;
+ .timescale 0 0;
+v0x1789290_0 .var "a", 0 0;
+v0x1789350_0 .var "b", 0 0;
+v0x1789420_0 .net "carry", 0 0, L_0x17895f0;  1 drivers
+v0x1789520_0 .net "sum", 0 0, L_0x1789690;  1 drivers
+S_0x1776b40 .scope module, "add" "adder" 2 7, 3 1 0, S_0x17769b0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "s";
+    .port_info 3 /OUTPUT 1 "c";
+L_0x7f6976cc9060 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x1751460_0 .net *"_ivl_10", 0 0, L_0x7f6976cc9060;  1 drivers
+v0x1788b30_0 .net *"_ivl_11", 1 0, L_0x1789a80;  1 drivers
+v0x1788c10_0 .net *"_ivl_3", 1 0, L_0x17897d0;  1 drivers
+L_0x7f6976cc9018 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x1788d00_0 .net *"_ivl_6", 0 0, L_0x7f6976cc9018;  1 drivers
+v0x1788de0_0 .net *"_ivl_7", 1 0, L_0x1789910;  1 drivers
+v0x1788f10_0 .net "a", 0 0, v0x1789290_0;  1 drivers
+v0x1788fd0_0 .net "b", 0 0, v0x1789350_0;  1 drivers
+v0x1789090_0 .net "c", 0 0, L_0x17895f0;  alias, 1 drivers
+v0x1789150_0 .net "s", 0 0, L_0x1789690;  alias, 1 drivers
+L_0x17895f0 .part L_0x1789a80, 1, 1;
+L_0x1789690 .part L_0x1789a80, 0, 1;
+L_0x17897d0 .concat [ 1 1 0 0], v0x1789290_0, L_0x7f6976cc9018;
+L_0x1789910 .concat [ 1 1 0 0], v0x1789350_0, L_0x7f6976cc9060;
+L_0x1789a80 .arith/sum 2, L_0x17897d0, L_0x1789910;
+    .scope S_0x17769b0;
+T_0 ;
+    %vpi_call 2 15 "$dumpvars" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1789290_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1789350_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x1789290_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1789350_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1789290_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x1789350_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x1789290_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x1789350_0, 0, 1;
+    %delay 5, 0;
+    %vpi_call 2 28 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.v";
+    "adder.v";
